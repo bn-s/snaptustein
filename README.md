@@ -1,3 +1,3 @@
-# Snaptustein
+# Snaptustein [WIP]
 
-A card game
+A card game... eventually.
