@@ -1,3 +1,33 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+      "airbnb",
+      "plugin:prettier/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:jsx-a11y/recommended",
+      "next/core-web-vitals"
+  ],
+  "plugins": [
+      "prettier",
+      "react"
+  ],
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      }
+  },
+  "rules": {
+      "prettier/prettier":                    [
+        "error",
+        {
+          "eslintIntegration": true,
+          "trailingComma": "all",
+          "semi": false,
+          "singleQuote": true,
+          "bracketSpacing": true
+        }
+      ],
+      "react/jsx-indent-props":               [2],
+      "react/jsx-indent":                     [2]
+  }
 }
