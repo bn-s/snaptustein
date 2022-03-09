@@ -8,9 +8,9 @@ export default function Home() {
         <meta name="description" content="A card game." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <div className="flex items-center justify-center w-full h-screen">
-      <h1 className="text-5xl">Snaptustein</h1>
-    </div>
+      <div className="flex items-center justify-center w-full h-screen">
+        <h1 className="text-5xl">Snaptustein</h1>
+      </div>
     </>
   )
 }
