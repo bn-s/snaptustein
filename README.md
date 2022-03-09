@@ -1,2 +1,3 @@
-# snaptustein
+# Snaptustein
+
 A card game
