@@ -1,4 +1,4 @@
-export function Heart() {
+function Heart() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
       <g transform="rotate(45,300,300)" fill="red">
@@ -10,7 +10,7 @@ export function Heart() {
   )
 }
 
-export function Club() {
+function Club() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
       <circle cx="18" cy="35" r="14" />
@@ -21,7 +21,7 @@ export function Club() {
   )
 }
 
-export function Diamond() {
+function Diamond() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
       <rect
@@ -36,7 +36,7 @@ export function Diamond() {
   )
 }
 
-export function Spade() {
+function Spade() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
       <g transform="rotate(225,30,30)">
@@ -49,7 +49,7 @@ export function Spade() {
   )
 }
 
-export default function CardSuits({ suit }) {
+export default function CardSuit({ suit }) {
   const normalizedSuit = suit[0].toUpperCase()
   return (
     <div>
