@@ -18,11 +18,77 @@ const cardConstants = [
   { stringValue: 'K', columns: null },
 ]
 
-function CardCenter({ suit }) {
+function CardCenterNumberedCol({ n, suit }) {
+  const inversionPoint = n - parseInt(n / 2, 10)
+  const justifyAround = n === 1 || n % 2 === 0
+  return (
+    <div
+      className={`inline-flex flex-col w-full ${
+        justifyAround ? 'justify-around' : 'justify-between'
+      }`}
+    >
+      {[...Array(n)].map((_, i) => {
+        // eslint-disable-next-line react/no-array-index-key
+        return <CardSuit invert={i >= inversionPoint} suit={suit} key={i} />
+      })}
+    </div>
+  )
+}
+
+function CardCenterNumbered({ value, suit }) {
+  const outerColumnValue = cardConstants[value].columns.outerColumn
+  const centerColumnValue = cardConstants[value].columns.centerColumn
+  return (
+    <div className="flex justify-between w-4/6 h-full py-8">
+      <CardCenterNumberedCol n={outerColumnValue} suit={suit} />
+      <CardCenterNumberedCol n={centerColumnValue} suit={suit} />
+      <CardCenterNumberedCol n={outerColumnValue} suit={suit} />
+    </div>
+  )
+}
+
+function CardCenterRest({ value, suit }) {
   return (
     <div className="flex flex-col justify-around w-4/6 h-full py-8">
-      <CardSuit suit={suit} />
+      <div className="flex justify-between w-full">
+        {value === 0 ? (
+          ''
+        ) : (
+          <>
+            <CardSuit suit={suit} />
+            <CardSuit suit={suit} />
+          </>
+        )}
+      </div>
+      <div className="flex justify-center">
+        {value === 0 ? (
+          <CardSuit suit={suit} large />
+        ) : (
+          <p className="text-9xl font-roboto">
+            {cardConstants[value].stringValue}
+          </p>
+        )}
+      </div>
+      <div className="flex justify-between w-full -rotate-180">
+        {value === 0 ? (
+          ''
+        ) : (
+          <>
+            <CardSuit suit={suit} />
+            <CardSuit suit={suit} />
+          </>
+        )}
+      </div>
     </div>
+  )
+}
+
+function CardCenter({ value, suit }) {
+  const isNumberedCard = value > 0 && value < 10
+  return isNumberedCard ? (
+    <CardCenterNumbered value={value} suit={suit} />
+  ) : (
+    <CardCenterRest value={value} suit={suit} />
   )
 }
 
@@ -51,7 +117,7 @@ export default function PlayingCard({ value, suit }) {
   return (
     <div className="flex w-80 h-[28rem] rounded-3xl border bg-white shadow-xl overflow-hidden">
       <CardSides value={value}>
-        <CardCenter suit={suit} />
+        <CardCenter value={value} suit={suit} />
       </CardSides>
     </div>
   )

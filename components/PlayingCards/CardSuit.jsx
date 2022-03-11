@@ -1,6 +1,10 @@
-function Heart() {
+function Heart({ large }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 600 600"
+      className={`${large ? 'w-32' : 'w-16'}`}
+    >
       <g transform="rotate(45,300,300)" fill="red">
         <rect x="150" y="150" height="350" width="350" />
         <circle cx="150" cy="325" r="175" />
@@ -10,9 +14,13 @@ function Heart() {
   )
 }
 
-function Club() {
+function Club({ large }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 60 60"
+      className={`${large ? 'w-32' : 'w-16'}`}
+    >
       <circle cx="18" cy="35" r="14" />
       <circle cx="30" cy="15" r="14" />
       <circle cx="42" cy="35" r="14" />
@@ -21,9 +29,13 @@ function Club() {
   )
 }
 
-function Diamond() {
+function Diamond({ large }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 60 60"
+      className={`${large ? 'w-32' : 'w-16'}`}
+    >
       <rect
         x="10"
         y="10"
@@ -36,9 +48,13 @@ function Diamond() {
   )
 }
 
-function Spade() {
+function Spade({ large }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 60 60"
+      className={`${large ? 'w-32' : 'w-16'}`}
+    >
       <g transform="rotate(225,30,30)">
         <rect width="30" height="30" x="20" y="20" />
         <circle cx="20" cy="35" r="15" />
@@ -49,16 +65,17 @@ function Spade() {
   )
 }
 
-export default function CardSuit({ suit }) {
+export default function CardSuit({ suit, invert = false, large = false }) {
   const normalizedSuit = suit[0].toUpperCase()
+
   return (
-    <div>
+    <div className={`${invert ? 'rotate-180' : ''}`}>
       {
         {
-          H: <Heart />,
-          C: <Club />,
-          D: <Diamond />,
-          S: <Spade />,
+          H: <Heart large={large} />,
+          C: <Club large={large} />,
+          D: <Diamond large={large} />,
+          S: <Spade large={large} />,
         }[normalizedSuit]
       }
     </div>
